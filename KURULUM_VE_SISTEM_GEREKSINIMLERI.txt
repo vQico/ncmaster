@@ -1,0 +1,83 @@
+================================================================================
+          NC MASTER - PREMİUM OTOMOTİV DİJİTAL SİSTEMİ (PRODUCTION BUILD 2026)
+                   KURULUM REHBERİ VE SİSTEM GEREKSİNİMLERİ
+================================================================================
+
+--------------------------------------------------------------------------------
+1. MİNİMUM VE ÖNERİLEN SİSTEM GEREKSİNİMLERİ
+--------------------------------------------------------------------------------
+• İşletim Sistemi : Windows 10/11, Ubuntu 20.04+, macOS Sonoma+
+• Node.js         : Node.js v18.17.0 veya daha yüksek (Önerilen: Node.js v20.x LTS)
+• Paket Yöneticisi: npm v9.x+ (Node.js ile birlikte gelir) veya yarn / pnpm
+• İşlemci (CPU)   : 2 Çekirdek 2.0 GHz ve üzeri (Önerilen: 4 Çekirdek 3.0 GHz)
+• Bellek (RAM)    : Minimum 4 GB RAM (Önerilen: 8 GB+ RAM)
+• Depolama        : 1 GB kullanılabilir disk alanı
+• Veritabanı      : SQLite (Yerleşik - Dahili kurulum gerektirmez, Prisma ORM hazır)
+
+--------------------------------------------------------------------------------
+2. PROJE KLASÖR YAPISI VE LOGO ASSETLERİ
+--------------------------------------------------------------------------------
+Uygulama içerisinde orijinal çözünürlükleri korunarak oluşturulmuş grafik ve 
+vektör logo dosyaları 'public/logo/' klasöründe ve ZIP arşivinin kök dizininde yer almaktadır:
+
+• public/logo/nc-master-logo.png        : Yüksek Çözünürlüklü Şeffaf Logo (PNG)
+• public/logo/nc-master-logo.jpg        : Yüksek Çözünürlüklü Arka Planlı Logo (JPG)
+• public/logo/nc-master-logo-round.png  : Yuvarlak Daire Amblem (PNG)
+• public/logo/nc-master-logo-round.jpg  : Yuvarlak Daire Amblem (JPG)
+• public/logo/logo-dark.svg             : Vektörel SVG Logo
+
+--------------------------------------------------------------------------------
+3. ADIM ADIM KURULUM VE ÇALIŞTIRMA TALİMATLARI
+--------------------------------------------------------------------------------
+
+[Adım 1] Dosyaları Klasöre Çıkarma:
+----------------------------------
+ZIP dosyasını istediğiniz sunucu veya yerel çalışma dizinine çıkarın.
+
+[Adım 2] Bağımlılıkları Yükleme (npm install):
+----------------------------------------------
+Komut satırını (Terminal / PowerShell) proje klasöründe açın ve çalıştırın:
+> npm install
+
+[Adım 3] Veritabanı Kurulumu (Prisma SQLite):
+---------------------------------------------
+Yerel veritabanı tablolarını ve şemasını oluşturmak için:
+> npx prisma db push
+
+Admin kullanıcısını veritabanına eklemek / güncellemek için:
+> node create_admin_user.js
+
+[Adım 4] Geliştirici Modunda Çalıştırma (Dev Mode - Port 3005):
+--------------------------------------------------------------
+> npx next dev -p 3005
+Veya pakette tanımlı varsayılan port ile:
+> npm run dev
+
+Uygulamaya erişim: http://localhost:3005
+
+[Adım 5] Canlı Canlı Üretim Derlemesi Almak (Production Build):
+----------------------------------------------------------------
+> npm run build
+> npm run start
+
+--------------------------------------------------------------------------------
+4. GÜVENLİK VE İÇERİK KORUMA (SECURITY & CONTENT PROTECTION)
+--------------------------------------------------------------------------------
+Sistem içerisindeki içerikler ve kod yapısı canlı ortama tam korumalı olarak 
+hazırlanmıştır:
+1. Geliştirici Araçları (F12) ve Kısayollar (Ctrl+Shift+I/J/C, Ctrl+U) Engellendi.
+2. Sağ Tık Bağlam Menüsü (Right-Click Context Menu) Engellendi.
+3. Metin ve Görsel Seçimi / Kopyalama (Drag & Drop, Copy & Cut) Kısıtlandı.
+4. Production ortamında Geliştirici Konsol Çıktıları (console.log) Tamamen Kapatıldı.
+
+--------------------------------------------------------------------------------
+5. YÖNETİM PANELİ (ADMIN PANEL) BİLGİLERİ
+--------------------------------------------------------------------------------
+• Yönetim Paneli Giriş URL : http://localhost:3005/admin/login
+• Yönetim Kontrol Paneli  : http://localhost:3005/admin
+• Admin Rolü              : SUPER_ADMIN / ADMIN
+
+--------------------------------------------------------------------------------
+                            NC MASTER DEVELOPMENT TEAM
+                             Signature: H-WK Digital.
+================================================================================

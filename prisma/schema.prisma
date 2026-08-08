@@ -1,0 +1,131 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  role         String   @default("ADMIN") // SUPER_ADMIN, ADMIN, EDITOR, STAFF
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Appointment {
+  id        String   @id @default(cuid())
+  service   String
+  carBrand  String
+  carModel  String
+  modelYear String
+  date      String
+  time      String
+  fullName  String
+  phone     String
+  email     String?
+  notes     String?
+  status    String   @default("PENDING") // PENDING, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED
+  createdAt DateTime @default(now())
+}
+
+model QuoteRequest {
+  id        String   @id @default(cuid())
+  fullName  String
+  phone     String
+  carBrand  String
+  carModel  String
+  modelYear String?
+  services  String
+  photoUrl  String?
+  notes     String?
+  status    String   @default("NEW")
+  createdAt DateTime @default(now())
+}
+
+model Customer {
+  id        String    @id @default(cuid())
+  fullName  String
+  phone     String    @unique
+  email     String?
+  vehicles  Vehicle[]
+  createdAt DateTime  @default(now())
+}
+
+model Vehicle {
+  id          String    @id @default(cuid())
+  customerId  String
+  customer    Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  brand       String
+  model       String
+  year        String
+  vin         String?
+  ppfStatus   String?   @default("ACTIVE")
+  ceramicStat String?   @default("ACTIVE")
+  lastService DateTime?
+  createdAt   DateTime  @default(now())
+}
+
+model GalleryImage {
+  id          String   @id @default(cuid())
+  url         String
+  title       String?
+  category    String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model CustomerReview {
+  id        String   @id @default(cuid())
+  author    String
+  carModel  String
+  content   String
+  rating    Int      @default(5)
+  isApproved Boolean @default(true)
+  createdAt DateTime @default(now())
+}
+
+model FaqItem {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String   @default("GENEL")
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String
+  category    String
+  image       String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model ContentVersion {
+  id        String   @id @default(cuid())
+  section   String   @unique
+  content   String
+  updatedBy String
+  updatedAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  fullName  String
+  phone     String
+  vehicle   String?
+  message   String
+  status    String   @default("NEW")
+  ipAddress String?
+  createdAt DateTime @default(now())
+}
+

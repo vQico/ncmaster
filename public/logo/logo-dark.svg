@@ -1,0 +1,51 @@
+<svg width="360" height="75" viewBox="0 0 360 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Ultra High-End Platinum Chrome Gradient -->
+    <linearGradient id="porscheChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#E2E8F0" />
+      <stop offset="65%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="silverFaceted" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+  </defs>
+
+  <!-- Supercar Shield Crest Emblem (Left) -->
+  <g transform="translate(6, 4)">
+    <!-- Outer Octagonal Shield Frame -->
+    <path d="M32 2 L58 12 L58 42 L32 64 L6 42 L6 12 L32 2 Z" fill="#050505" stroke="url(#porscheChrome)" stroke-width="2.5" stroke-linejoin="miter" />
+    
+    <!-- Inner Metallic Inset Line -->
+    <path d="M32 7 L53 15 L53 40 L32 58 L11 40 L11 15 L32 7 Z" fill="#050505" stroke="url(#silverFaceted)" stroke-width="1" opacity="0.6" />
+
+    <!-- Sharp Faceted Interlocking NC Monogram -->
+    <!-- Geometric 'N' -->
+    <polygon points="18,20 23,20 34,42 34,20 39,20 39,46 34,46 23,24 23,46 18,46" fill="#FFFFFF" />
+    <!-- Supercar Wing 'C' Curve -->
+    <path d="M44 22 C37 19 28 21 28 32 C28 43 37 45 44 42" stroke="url(#porscheChrome)" stroke-width="2.5" stroke-linecap="square" fill="none" />
+  </g>
+
+  <!-- High-End Corporate Vector Wordmark (NC MASTER) -->
+  <g fill="#FFFFFF" transform="translate(80, 24)">
+    <!-- N -->
+    <path d="M0 0 H6 L16 22 V0 H22 V28 H16 L6 6 V28 H0 V0 Z" />
+    <!-- C -->
+    <path d="M40 2 C35 -1 27 2 27 14 C27 26 35 29 40 26 L38 21 C35 23 32 21 32 14 C32 7 35 5 38 7 L40 2 Z" />
+    <!-- M -->
+    <path d="M52 0 H59 L65 16 L71 0 H78 V28 H72 V8 L67 22 H63 L58 8 V28 H52 V0 Z" />
+    <!-- A -->
+    <path d="M88 0 H95 L103 28 H97 L95 21 H88 L86 28 H80 L88 0 Z M91 7 L89 16 H94 L91 7 Z" />
+    <!-- S -->
+    <path d="M116 2 C111 -1 106 3 106 8 C106 17 118 14 118 21 C118 25 113 28 107 25 L106 28 C113 31 124 27 124 20 C124 11 112 14 112 8 C112 4 116 3 119 5 L121 1 C119 0 117 0 116 2 Z" />
+    <!-- T -->
+    <path d="M128 0 H146 V5 H140 V28 H134 V5 H128 V0 Z" />
+    <!-- E -->
+    <path d="M150 0 H166 V5 H156 V11 H164 V16 H156 V23 H167 V28 H150 V0 Z" />
+    <!-- R -->
+    <path d="M172 0 H182 C188 0 192 3 192 9 C192 13 189 16 185 17 L193 28 H186 L179 18 H178 V28 H172 V0 Z M178 5 V13 H182 C185 13 187 11 187 9 C187 7 185 5 182 5 H178 Z" />
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%; /* #050505 */
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 48 100% 50%; /* #FFD400 */
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 48 100% 50%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 48 100% 50%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  body {
+    @apply bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#FFD400]/30 selection:text-[#FFD400] antialiased overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-white;
+  }
+}
+
+/* Custom Thin Architectural Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #151515;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD400;
+}
+
+/* Glassmorphism & Metallic Utilities */
+.glass {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-yellow {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  box-shadow: 0 0 25px rgba(255, 212, 0, 0.08);
+}
+
+.yellow-glow {
+  box-shadow: 0 0 35px rgba(255, 212, 0, 0.25);
+}
+
+.yellow-text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-[#FFF099] to-[#FFD400];
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
