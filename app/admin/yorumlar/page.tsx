@@ -125,14 +125,14 @@ export default function AdminYorumlarPage() {
   };
 
   return (
-    <div className="space-y-8 max-w-6xl font-sans">
+    <div className="space-y-6 sm:space-y-8 max-w-6xl font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 gap-4">
         <div>
-          <span className="text-xs font-mono tracking-[0.3em] text-[#FFD400] uppercase font-bold">
+          <span className="text-[10px] sm:text-xs font-mono tracking-[0.3em] text-[#FFD400] uppercase font-bold">
             MÜŞTERİ MEMNUNİYETİ
           </span>
-          <h1 className="font-display font-extrabold text-3xl text-white mt-1">
+          <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">
             Müşteri Yorumları Yönetimi
           </h1>
           <p className="text-xs text-gray-400 mt-1 font-mono">
@@ -142,7 +142,7 @@ export default function AdminYorumlarPage() {
 
         <button
           onClick={handleOpenNew}
-          className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#FFD400] text-[#050505] font-extrabold text-xs uppercase tracking-widest hover:bg-white transition-colors"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#FFD400] text-[#050505] font-extrabold text-xs uppercase tracking-widest hover:bg-white transition-colors"
         >
           <Plus size={16} />
           <span>Yeni Yorum Ekle</span>
@@ -171,15 +171,15 @@ export default function AdminYorumlarPage() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {reviews.map((r) => (
             <div
               key={r.id}
-              className="glass p-6 border-t-2 border-t-[#FFD400] flex flex-col justify-between space-y-4 group hover:border-white/30 transition-colors"
+              className="glass p-5 sm:p-6 border-t-2 border-t-[#FFD400] flex flex-col justify-between space-y-4 group hover:border-white/30 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display font-extrabold text-lg text-white">{r.author}</h3>
+                  <h3 className="font-display font-extrabold text-base sm:text-lg text-white">{r.author}</h3>
                   <div className="flex items-center text-[#FFD400] gap-1">
                     {[...Array(r.rating)].map((_, i) => (
                       <Star key={i} size={14} className="fill-[#FFD400]" />
@@ -198,7 +198,7 @@ export default function AdminYorumlarPage() {
                 <button
                   type="button"
                   onClick={() => handleToggleApproval(r)}
-                  className={`px-3 py-1 text-[10px] font-bold border transition-colors flex items-center gap-1.5 ${
+                  className={`px-2.5 py-1 text-[9px] sm:text-[10px] font-bold border transition-colors flex items-center gap-1.5 ${
                     r.isApproved
                       ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
                       : "bg-gray-500/10 text-gray-400 border-gray-500/30"
@@ -233,10 +233,10 @@ export default function AdminYorumlarPage() {
 
       {/* Add / Edit Review Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 select-none font-sans">
-          <div className="w-full max-w-lg glass p-8 border-t-2 border-t-[#FFD400] space-y-6 relative shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-sans">
+          <div className="w-full max-w-lg glass p-6 sm:p-8 border-t-2 border-t-[#FFD400] space-y-6 relative shadow-2xl my-auto">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <h3 className="font-display font-bold text-xl text-white">
+              <h3 className="font-display font-bold text-lg sm:text-xl text-white">
                 {editingReview.id ? "Müşteri Yorumunu Düzenle" : "Yeni Müşteri Yorumu Ekle"}
               </h3>
               <button
@@ -256,7 +256,7 @@ export default function AdminYorumlarPage() {
                   value={editingReview.author}
                   onChange={(e) => setEditingReview({ ...editingReview, author: e.target.value })}
                   placeholder="Örn: Murat Yıldırım"
-                  className="w-full p-3.5 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
+                  className="w-full p-3 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
                 />
               </div>
 
@@ -268,7 +268,7 @@ export default function AdminYorumlarPage() {
                   value={editingReview.carModel}
                   onChange={(e) => setEditingReview({ ...editingReview, carModel: e.target.value })}
                   placeholder="Örn: Porsche 911 Carrera S"
-                  className="w-full p-3.5 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
+                  className="w-full p-3 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
                 />
               </div>
 
@@ -280,17 +280,17 @@ export default function AdminYorumlarPage() {
                   value={editingReview.content}
                   onChange={(e) => setEditingReview({ ...editingReview, content: e.target.value })}
                   placeholder="Müşterinin deneyimi ve yorum metni..."
-                  className="w-full p-3.5 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
+                  className="w-full p-3 bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-400 uppercase font-bold mb-1">PUAN (1 - 5 YILDIZ)</label>
                   <select
                     value={editingReview.rating}
                     onChange={(e) => setEditingReview({ ...editingReview, rating: Number(e.target.value) })}
-                    className="w-full p-3.5 bg-[#101010] border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
+                    className="w-full p-3 bg-[#101010] border border-white/10 text-white focus:outline-none focus:border-[#FFD400]"
                   >
                     <option value={5}>⭐⭐⭐⭐⭐ (5 Yıldız)</option>
                     <option value={4}>⭐⭐⭐⭐ (4 Yıldız)</option>
@@ -303,7 +303,7 @@ export default function AdminYorumlarPage() {
                   <button
                     type="button"
                     onClick={() => setEditingReview({ ...editingReview, isApproved: !editingReview.isApproved })}
-                    className={`w-full py-3.5 text-xs font-bold uppercase border transition-colors ${
+                    className={`w-full py-3 text-xs font-bold uppercase border transition-colors ${
                       editingReview.isApproved
                         ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
                         : "bg-gray-500/10 text-gray-400 border-gray-500/30"

@@ -154,14 +154,14 @@ export default function AdminTaleplerPage() {
   });
 
   return (
-    <div className="space-y-8 max-w-6xl font-sans">
+    <div className="space-y-6 sm:space-y-8 max-w-6xl font-sans">
       {/* Top Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-white/10 gap-4">
         <div>
-          <span className="text-xs font-mono tracking-[0.3em] text-[#FFD400] uppercase font-bold">
+          <span className="text-[10px] sm:text-xs font-mono tracking-[0.3em] text-[#FFD400] uppercase font-bold">
             MÜŞTERİ RANDEVU VE TEKLİF YÖNETİMİ
           </span>
-          <h1 className="font-display font-extrabold text-3xl text-white mt-1">
+          <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">
             Gelen Randevu & Hizmet Talepleri
           </h1>
           <p className="text-xs text-gray-400 mt-1 font-mono">
@@ -188,7 +188,7 @@ export default function AdminTaleplerPage() {
           <button
             key={st}
             onClick={() => setFilterStatus(st)}
-            className={`px-4 py-2 text-xs font-mono font-bold uppercase border transition-colors ${
+            className={`px-3.5 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono font-bold uppercase border transition-colors ${
               filterStatus === st
                 ? "bg-[#FFD400] text-[#050505] border-[#FFD400]"
                 : "bg-white/5 text-gray-400 border-white/10 hover:text-white"
@@ -213,38 +213,38 @@ export default function AdminTaleplerPage() {
             return (
               <div
                 key={item.id}
-                className="glass p-6 border-t-2 border-t-[#FFD400] flex flex-col lg:flex-row lg:items-center justify-between gap-6 group hover:border-white/30 transition-colors"
+                className="glass p-5 sm:p-6 border-t-2 border-t-[#FFD400] flex flex-col lg:flex-row lg:items-center justify-between gap-6 group hover:border-white/30 transition-colors"
               >
                 {/* Left Request Specs */}
                 <div className="space-y-3 min-w-0">
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     <span className="px-2.5 py-1 bg-[#FFD400]/20 border border-[#FFD400]/40 text-[#FFD400] font-mono font-bold text-xs">
                       {item.trackingCode || "NC-DEMO"}
                     </span>
-                    <h3 className="font-display font-extrabold text-lg text-white truncate">{item.fullName}</h3>
-                    <span className={`px-2.5 py-0.5 text-[10px] font-mono font-bold border ${badge.bg}`}>
+                    <h3 className="font-display font-extrabold text-base sm:text-lg text-white truncate">{item.fullName}</h3>
+                    <span className={`px-2 py-0.5 text-[9px] sm:text-[10px] font-mono font-bold border ${badge.bg}`}>
                       {badge.label}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono text-gray-300">
-                    <div className="flex items-center gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-xs font-mono text-gray-300">
+                    <div className="flex items-center gap-2 min-w-0">
                       <Car size={14} className="text-[#FFD400] shrink-0" />
                       <span className="truncate">
                         {item.carBrand} {item.carModel} ({item.modelYear})
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
                       <Calendar size={14} className="text-[#FFD400] shrink-0" />
-                      <span>
+                      <span className="truncate">
                         {item.date} @ {item.time}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
                       <Phone size={14} className="text-[#FFD400] shrink-0" />
-                      <a href={`tel:${item.phone.replace(/\s+/g, "")}`} className="hover:underline text-[#FFD400]">
+                      <a href={`tel:${item.phone.replace(/\s+/g, "")}`} className="hover:underline text-[#FFD400] truncate">
                         {item.phone}
                       </a>
                     </div>
@@ -252,7 +252,7 @@ export default function AdminTaleplerPage() {
 
                   <div className="text-xs text-gray-400 font-mono">
                     Hizmet: <strong className="text-white">{item.service}</strong>
-                    {item.notes && <span className="ml-3 text-gray-500 italic truncate">&ldquo;{item.notes}&rdquo;</span>}
+                    {item.notes && <span className="ml-3 text-gray-500 italic truncate block sm:inline">&ldquo;{item.notes}&rdquo;</span>}
                   </div>
                 </div>
 
@@ -284,16 +284,16 @@ export default function AdminTaleplerPage() {
         </div>
       )}
 
-      {/* Full Request Details Modal */}
+      {/* Full Request Details Modal (Scrollable on Mobile) */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 select-none font-sans">
-          <div className="w-full max-w-2xl glass p-8 border-t-2 border-t-[#FFD400] space-y-6 relative shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-sans">
+          <div className="w-full max-w-2xl glass p-6 sm:p-8 border-t-2 border-t-[#FFD400] space-y-6 relative shadow-2xl my-auto">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 bg-[#FFD400] text-[#050505] font-mono font-extrabold text-sm">
+                <span className="px-3 py-1 bg-[#FFD400] text-[#050505] font-mono font-extrabold text-xs sm:text-sm">
                   {selectedItem.trackingCode || "NC-DEMO"}
                 </span>
-                <h3 className="font-display font-bold text-xl text-white">Talep & Randevu Detayları</h3>
+                <h3 className="font-display font-bold text-base sm:text-xl text-white">Talep & Randevu Detayları</h3>
               </div>
               <button
                 onClick={() => setSelectedItem(null)}
@@ -303,12 +303,12 @@ export default function AdminTaleplerPage() {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs font-mono">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-xs font-mono">
               <div className="space-y-1 p-4 bg-white/5 border border-white/10">
                 <span className="text-gray-400 uppercase font-bold block">MÜŞTERİ BİLGİLERİ</span>
                 <p className="text-sm font-bold text-white pt-1">{selectedItem.fullName}</p>
                 <p className="text-gray-300">Tel: {selectedItem.phone}</p>
-                {selectedItem.email && <p className="text-gray-300">E-Posta: {selectedItem.email}</p>}
+                {selectedItem.email && <p className="text-gray-300 break-all">E-Posta: {selectedItem.email}</p>}
               </div>
 
               <div className="space-y-1 p-4 bg-white/5 border border-white/10">
@@ -347,7 +347,7 @@ export default function AdminTaleplerPage() {
                     key={st.code}
                     disabled={statusUpdating}
                     onClick={() => handleUpdateStatus(selectedItem.id, st.code)}
-                    className={`px-4 py-2 text-xs font-mono font-bold uppercase border transition-colors ${
+                    className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-mono font-bold uppercase border transition-colors ${
                       selectedItem.status.toUpperCase() === st.code
                         ? "bg-[#FFD400] text-[#050505] border-[#FFD400]"
                         : "bg-white/5 text-gray-300 border-white/10 hover:border-white hover:text-white"
