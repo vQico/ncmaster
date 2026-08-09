@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Search,
   Settings,
+  Share2,
   LogOut,
   ShieldCheck,
 } from "lucide-react";
@@ -32,6 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const menuItems = [
     { label: "Yönetim Paneli", icon: LayoutDashboard, href: "/admin" },
+    { label: "Sosyal Medya", icon: Share2, href: "/admin/sosyal-medya" },
     { label: "İçerik Yönetimi", icon: FileText, href: "/admin/icerik" },
     { label: "Galeri & Medya", icon: ImageIcon, href: "/admin/galeri" },
     { label: "Blog Yönetimi", icon: BookOpen, href: "/admin/blog" },
@@ -42,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#F5F5F5] flex font-sans antialiased select-none">
+    <div className="min-h-screen bg-[#050505] text-[#F5F5F5] flex font-sans antialiased">
       <ContentProtection />
       {/* Admin Sidebar */}
       <aside className="w-64 bg-[#0A0A0A] border-r border-white/10 flex flex-col justify-between p-6 shrink-0 hidden md:flex">

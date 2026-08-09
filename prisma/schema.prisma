@@ -18,19 +18,20 @@ model User {
 }
 
 model Appointment {
-  id        String   @id @default(cuid())
-  service   String
-  carBrand  String
-  carModel  String
-  modelYear String
-  date      String
-  time      String
-  fullName  String
-  phone     String
-  email     String?
-  notes     String?
-  status    String   @default("PENDING") // PENDING, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED
-  createdAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  trackingCode String?  @unique // e.g. NC-849201
+  service      String
+  carBrand     String
+  carModel     String
+  modelYear    String
+  date         String
+  time         String
+  fullName     String
+  phone        String
+  email        String?
+  notes        String?
+  status       String   @default("PENDING") // PENDING, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED
+  createdAt    DateTime @default(now())
 }
 
 model QuoteRequest {
@@ -80,13 +81,13 @@ model GalleryImage {
 }
 
 model CustomerReview {
-  id        String   @id @default(cuid())
-  author    String
-  carModel  String
-  content   String
-  rating    Int      @default(5)
-  isApproved Boolean @default(true)
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  author     String
+  carModel   String
+  content    String
+  rating     Int      @default(5)
+  isApproved Boolean  @default(true)
+  createdAt  DateTime @default(now())
 }
 
 model FaqItem {
@@ -99,15 +100,15 @@ model FaqItem {
 }
 
 model BlogPost {
-  id          String   @id @default(cuid())
-  title       String
-  slug        String   @unique
-  summary     String
-  content     String
-  category    String
-  image       String
-  published   Boolean  @default(true)
-  createdAt   DateTime @default(now())
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  summary   String
+  content   String
+  category  String
+  image     String
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
 }
 
 model ContentVersion {
@@ -129,3 +130,25 @@ model ContactMessage {
   createdAt DateTime @default(now())
 }
 
+model SiteSetting {
+  id                 String   @id @default("default")
+  address            String   @default("Mersin, Türkiye")
+  fullAddress        String   @default("Yenişehir Mahallesi, 1. Cadde No:33, Mersin, Türkiye")
+  phone              String   @default("+90 552 090 06 98")
+  email              String   @default("info@ncmastergarage.com")
+  workingHours       String   @default("Pzt – Cmt: 09:00 – 19:00 | Pazar: Randevu ile")
+  googleMapsEmbedUrl String   @default("https://maps.google.com/maps?q=Mersin,Turkey&t=&z=13&ie=UTF8&iwloc=&output=embed")
+  googleMapsLink     String   @default("https://maps.google.com/?q=Mersin")
+  updatedAt          DateTime @updatedAt
+}
+
+model SocialMediaLink {
+  id        String   @id @default(cuid())
+  platform  String   // Instagram, WhatsApp, Facebook, YouTube, TikTok, X, LinkedIn, Phone, Email
+  title     String
+  url       String
+  iconName  String   // instagram, phone, mail, facebook, youtube, video, share2, globe
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}

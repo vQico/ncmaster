@@ -1,35 +1,34 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ContentProtection() {
+  const pathname = usePathname();
+
   useEffect(() => {
-    // 1. Suppress console output in production environment
-    if (process.env.NODE_ENV === "production" || typeof window !== "undefined") {
-      const noop = () => {};
-      window.console.log = noop;
-      window.console.warn = noop;
-      window.console.info = noop;
-      window.console.debug = noop;
-      // Preserve critical error logging if needed, or disable
-      window.console.error = noop;
+    // 1. Completely disable protection on admin pages so admin interactions work 100% smoothly
+    if (pathname && pathname.startsWith("/admin")) {
+      return;
     }
 
-    // 2. Prevent right-click context menu
+    // 2. Prevent right-click context menu on public site
     const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+        return true;
+      }
       e.preventDefault();
       return false;
     };
 
-    // 3. Prevent F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S
+    // 3. Prevent F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S on public site
     const handleKeyDown = (e: KeyboardEvent) => {
-      // F12 key
       if (e.key === "F12" || e.keyCode === 123) {
         e.preventDefault();
         return false;
       }
 
-      // Ctrl + Shift + I / J / C
       if (
         e.ctrlKey &&
         e.shiftKey &&
@@ -44,37 +43,19 @@ export default function ContentProtection() {
         return false;
       }
 
-      // Ctrl + U (View Page Source)
       if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
         e.preventDefault();
         return false;
       }
 
-      // Ctrl + S (Save Page)
       if (e.ctrlKey && (e.key === "S" || e.key === "s")) {
         e.preventDefault();
         return false;
       }
     };
 
-    // 4. Prevent image drag and copy
+    // 4. Prevent image drag
     const handleDragStart = (e: DragEvent) => {
-      e.preventDefault();
-      return false;
-    };
-
-    const handleCopy = (e: ClipboardEvent) => {
-      // Disable copying text/content
-      e.preventDefault();
-      return false;
-    };
-
-    const handleSelectStart = (e: Event) => {
-      const target = e.target as HTMLElement | null;
-      // Allow input typing, block text selection on public layout elements
-      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
-        return true;
-      }
       e.preventDefault();
       return false;
     };
@@ -82,17 +63,13 @@ export default function ContentProtection() {
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("dragstart", handleDragStart);
-    document.addEventListener("copy", handleCopy);
-    document.addEventListener("selectstart", handleSelectStart);
 
     return () => {
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("dragstart", handleDragStart);
-      document.removeEventListener("copy", handleCopy);
-      document.removeEventListener("selectstart", handleSelectStart);
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

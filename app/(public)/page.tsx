@@ -7,7 +7,6 @@ import BeforeAfterSlider from "@/components/sections/BeforeAfterSlider";
 import VehicleConfigurator3D from "@/components/sections/VehicleConfigurator3D";
 import DetailingHorizontalScroll from "@/components/sections/DetailingHorizontalScroll";
 import TimelineProcess from "@/components/sections/TimelineProcess";
-import VehicleCareCockpit from "@/components/sections/VehicleCareCockpit";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 
 export default function HomePage() {
@@ -32,9 +31,6 @@ export default function HomePage() {
 
       {/* 06. PROCESS: NC MASTER DENEYİMİ */}
       <TimelineProcess />
-
-      {/* 07. VEHICLE CARE DIGITAL COCKPIT */}
-      <VehicleCareCockpit />
     </>
   );
 }

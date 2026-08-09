@@ -173,7 +173,7 @@ export default function ServicesEditorial() {
   const [activeService, setActiveService] = useState<ServiceItem>(servicesData[0]);
 
   return (
-    <section id="hizmetler-index" className="py-28 bg-[#050505] border-b border-white/10 relative overflow-hidden">
+    <section id="hizmetler-index" className="py-14 sm:py-28 bg-[#050505] border-b border-white/10 relative overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

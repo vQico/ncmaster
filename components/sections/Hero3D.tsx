@@ -22,7 +22,7 @@ export default function Hero3D() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen bg-[#050505] overflow-hidden flex items-center pt-28 pb-16 border-b border-white/10">
+    <section className="relative w-full min-h-screen bg-[#050505] overflow-hidden flex items-center pt-28 sm:pt-36 pb-16 sm:pb-24 border-b border-white/10">
       {/* Background Dark Cinematic Visual & Parallax Glow */}
       <div
         className="absolute inset-0 z-0 opacity-25 pointer-events-none transition-transform duration-700 ease-out"

@@ -40,7 +40,7 @@ export default function BeforeAfterSlider({
   };
 
   return (
-    <section className="py-28 bg-[#050505] border-b border-white/10 relative overflow-hidden">
+    <section className="py-14 sm:py-28 bg-[#050505] border-b border-white/10 relative overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
