@@ -9,7 +9,7 @@ interface HWKDigitalLogoProps {
 export default function HWKDigitalLogo({ className = "" }: HWKDigitalLogoProps) {
   return (
     <a
-      href="https://hwkdigital.com"
+      href="https://wa.me/+908508880998"
       target="_blank"
       rel="noreferrer"
       title="Dev. H-WK Digital."

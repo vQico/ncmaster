@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import NCMonogram from "@/components/ui/NCMonogram";
 import SocialBrandIcon from "@/components/ui/SocialBrandIcon";
+import HWKDigitalLogo from "@/components/ui/HWKDigitalLogo";
 
 interface SettingsData {
   address: string;
@@ -191,7 +192,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Boxed Section with 2-by-2 Grid Legal Links */}
+        {/* Bottom Boxed Section with 2-by-2 Grid Legal Links & WhatsApp H-WK Link */}
         <div className="p-5 sm:p-6 bg-white/[0.02] border border-white/10 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-5 text-center lg:text-left font-mono text-xs">
           <p className="text-[11px] text-gray-400">
             &copy; {new Date().getFullYear()} NC MASTER. Tüm hakları saklıdır.
@@ -204,6 +205,9 @@ export default function Footer() {
             <Link href="/cerez-politikasi" className="hover:text-white transition-colors">Çerez Politikası</Link>
             <Link href="/kullanim-kosullari" className="hover:text-white transition-colors">Kullanım Koşulları</Link>
           </div>
+
+          {/* H-WK Digital WhatsApp Link */}
+          <HWKDigitalLogo />
         </div>
       </div>
     </footer>
